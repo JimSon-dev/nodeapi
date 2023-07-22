@@ -1,10 +1,10 @@
+const http = require('http');
+const app = require('./app');
 const mongoose = require('mongoose');
-const superagent = require('superagent');
-const { isNull } = require('util');
 
 async function connectToDB() {
     try {
-        await mongoose.connect('mongodb+srv://temp:customyoutubeadmin1029@cluster0.cjv9i.mongodb.net/customYoutubeDB?retryWrites=true&w=majority'), { useNewUrlParser: true, useUnifiedTopology: true  };
+        await mongoose.connect('mongodb+srv://public:readonly123@testingenvcluster.cjv9i.mongodb.net/customYoutubeDB?retryWrites=true&w=majority'), { useNewUrlParser: true, useUnifiedTopology: true  };
     } catch (error) {
         console.log(error);
     } finally {
@@ -13,6 +13,7 @@ async function connectToDB() {
 };
 connectToDB();
 
-//items(snippet(title,description,thumbnails),contentDetails(videoId,videoPublishedAt))
-console.log("version 0.12");
-console.log("used cluster0.cjv9i.mongodb.net/customYoutubeDB ");
+const port = process.env.PORT || 3000;  //port of the node server
+const server = http.createServer(app);  //connect app.js to the server
+
+server.listen(port);    //starts listening for connections
