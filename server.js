@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 async function connectToDB() {
     try {
-        await mongoose.connect('mongodb+srv://public:readonly123@testingenvcluster.cjv9i.mongodb.net/customYoutubeDB?retryWrites=true&w=majority'), { useNewUrlParser: true, useUnifiedTopology: true  };
+        await mongoose.connect('mongodb+srv://public:readonly123@cluster0.cjv9i.mongodb.net/customYoutubeDB?retryWrites=true&w=majority'), { useNewUrlParser: true, useUnifiedTopology: true  };
     } catch (error) {
         console.log(error);
     } finally {
